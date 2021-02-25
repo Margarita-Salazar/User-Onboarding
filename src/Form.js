@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Form(props) {
-    const { value, change, submit } = props;
+    const { disabled, errors, value, change, submit } = props;
 
     const onChange = (event) => {
         const { name, value } = event.target;
@@ -14,6 +14,7 @@ export default function Form(props) {
     return (
         <form onSubmit={onSubmit}>
             <div>
+                <div>{errors.name}</div>
                 <input 
                     type='text'
                     name='name'
@@ -21,6 +22,7 @@ export default function Form(props) {
                     value={value.name}
                     onChange={onChange}
                 />
+                <div>{errors.email}</div>
                 <input 
                     type='text'
                     name='email'
@@ -28,6 +30,7 @@ export default function Form(props) {
                     value={value.email}
                     onChange={onChange}
                 />
+                <div>{errors.password}</div>
                 <input 
                     type='password'
                     name='password'
@@ -35,7 +38,7 @@ export default function Form(props) {
                     value={value.password}
                     onChange={onChange}
                 />
-                <button>Submit</button>
+                <button disabled={disabled}>Submit</button>
             </div>
         </form>
     )
